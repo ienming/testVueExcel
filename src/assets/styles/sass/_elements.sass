@@ -1,0 +1,497 @@
+//Buttons style
+.mybtn
+    font-size: 1rem
+    font-weight: bold
+    height: fit-content
+    line-height: 1.425rem
+    border-radius: 16px
+    text-align: center
+    padding: .5rem 1.75rem
+    cursor: pointer
+    transition: all 0.6s $easeOutQuint
+    text-decoration: none
+    &:active
+        transform: scale(1.15)
+    &:focus
+        outline: none
+
+.mybtn:disabled
+    opacity: 0.3
+    cursor: initial
+
+.mybtn-main
+    @include btn-generator($white, $mainColor, 0px, transparent, $white, $mainHover, 0px, transparent)
+    @include mainShadow
+    &:not([disabled]):hover
+        @include mainShadowDown
+
+.mybtn-sub
+    @include btn-generator($white, $subColor, 0px, transparent, $white, $subHover, 0px, transparent)
+    @include subShadow
+    &:not([disabled]):hover
+        @include subShadowDown
+
+.mybtn-main.mybtn-highlight
+    @include btn-generator($mainColor, $white, 0px, transparent, $mainHover, $white, 0px, transparent)
+
+.mybtn-sub.mybtn-highlight
+    @include btn-generator($subColor, $white, 0px, transparent, $subHover, $white, 0px, transparent)
+
+.mybtn-outlined
+    font-weight: 500
+    @include btn-generator($black, transparent, 1px, $black, $black, $hoverGrey, 1px, $black)
+
+.mybtn-outlined.mybtn-highlight
+    @include btn-generator($white, transparent, 1px, $white, $white, $mainHover, 1px, $white)
+
+.mybtn-err
+    @include btn-generator($white, $errorMain, 0px, transparent, $white, $errorHover, 0px, transparent)
+
+.mybtn-outlined.mybtn-err
+    @include btn-generator($errorMain, transparent, 1px, $errorMain, $errorHover, $hoverGrey, 1px, $errorHover)
+
+.mybtn-cta
+    text-decoration: none
+    font-size: 42px
+    color: $white
+    @include gradientBgTransit
+    width: 100%
+    padding: 2rem 3rem
+    @include dflex(space-between, center, wrap)
+    transition: background-position 2s $easeOutQuint
+    border-radius: 8px
+    p
+        margin: 0
+        @include dflex()
+    img
+        padding-left: 1rem
+        width: 4rem
+        max-width: 72px
+        transition: transform .6s $easeOutQuint
+    &:active
+        transform: none
+    &:hover
+        color: $white
+        img
+            transform: translateX(20px)
+    &:visited:hover
+        color: $white
+
+.mybtn-txt
+    @include btn-generator($black, transparent, 0px, transparent, $black, $hoverGrey, 0px, transparent)
+    border-radius: .5rem
+    transition: none
+    min-width: unset
+    padding: .5rem .75rem
+    display: inline-flex
+    align-items: center
+    >img 
+        padding-right: .5rem
+    &:active
+        transform: none
+    &:focus
+        background-color: $hoverGrey
+
+.mybtn-txt.active
+    background-color: $hoverGrey
+    font-weight: bold
+
+.mybtn-secondary
+    @extend .mybtn-txt
+    padding: .25rem .75rem
+    text-decoration: none
+    @include btn-generator($black, transparent, 1px, $black, $black, $hoverGrey, 1px, $black)
+    @include btn-secondary
+    .icon
+        width: 1.75rem
+
+.sv-drft
+    @extend .mybtn-txt
+    padding: .5rem 1.5rem
+    @include btn-generator($white, transparent, 0px, transparent)
+    @include mainGradient
+    @include btn-secondary
+
+.mybtn.small
+    font-size: .8rem
+    font-weight: 500
+    text-decoration: none
+    >img
+        width: 1.5rem
+        padding-right: 0.25rem
+
+.mybtn-outlined.small
+    padding: .25rem 1rem
+// 
+// 
+// Other
+// Functional
+// UI Design
+// Components
+.mybtn-back
+    @include btn-generator($black, transparent, 1px, $black, $black, $hoverGrey, 1px, $black)
+    @include size(60px)
+    @extend .mybtn-txt
+    border-radius: 50%
+    justify-content: center
+    >img
+        padding: 0
+        width: 100%
+    &:focus
+        outline: none
+
+.go-top
+    position: fixed
+    right: 3.125vw
+    z-index: 99
+    bottom: 4.625vh
+    border-radius: 50%
+    background: linear-gradient(0deg, $mainColor 0%, $subColor 50%, $mainColor 100%)
+    background-size: 200% 200%
+    @include size(58px)
+    @include shadowLift
+    display: flex
+    justify-content: center
+    align-items: center
+    cursor: pointer
+    transition: all .6s $easeOutQuint
+    transform: scale(0)
+    pointer-events: none
+    >img
+        width: 60%
+        fill: $white
+    &:hover
+        @include shadowDown
+        background-position: 100% 100%
+
+.go-top.show
+    transform: scale(1)
+    pointer-events: auto
+
+// 
+// 
+// Side-Nav
+.left-nav
+    background-color: $white
+    display: inline-block
+    @include shadowLift
+    border-radius: 0 70px 70px 0
+    padding: 25px
+    position: fixed
+    left: 0
+    top: 25vh
+    z-index: 99
+    transition: all .6s $easeOutQuint
+    transform: translateX(-100%)
+    ul
+        list-style: none
+        padding-left: 0
+    a
+        text-decoration: none
+        color: $secondaryGrey
+        transition: all .6s $easeOutQuint
+    a.active
+        color: $black
+        font-weight: bold
+    @include rwd-down(md)
+        display: none
+
+.left-nav.show
+    transform: translateX(0)
+
+// 
+// 
+// Link
+a
+    color: $black
+    font-size: 1rem
+    line-height: 1.425rem
+    text-decoration-line: underline
+    &:hover
+        color: $darkGrey
+    &:visited:hover
+        color: $darkGrey
+
+a.mybtn
+    text-decoration: none
+
+a:hover
+    color: unset
+    text-decoration: none
+
+a.div-link
+    text-decoration: none
+
+
+// 
+// 
+// Input Form
+// Text Input
+.inp
+    -webkit-appearance: none
+    border-radius: 4px
+    border: none
+    box-shadow: 0 0 0 2px $secondaryGrey
+    transition: .6s $easeOutQuint
+    width: 250px
+    &:focus, &:active, &:checked
+        outline: none
+        box-shadow: 0 0 0 2px $black
+    &:hover:not(:disabled)
+        background-color: lighten($tertiaryGrey, 10%)
+
+.inp[type="text"], .inp[type="password"], textarea, .inp[type="date"]
+    padding: 8px 12px
+
+textarea
+    min-height: 290px
+
+// Checkbox
+.inp[type="checkbox"]
+    @include size(26px)
+    margin-right: 0.5rem
+    &:hover
+        box-shadow: 0 0 0 2px $black
+    &:checked
+        background: url("../img/icons/check_front.svg")
+        box-shadow: 0 0 0 2px $mainColor
+        &:hover
+            background: url("../img/icons/check_hover_front.svg")
+    &.inp-bk:checked
+        background: url("../img/icons/check_back.svg")
+        box-shadow: 0 0 0 2px $subColor
+        &:hover
+            background: url("../img/icons/check_hover_back.svg")
+
+// Radio
+.inp[type="radio"]
+    @extend .inp[type="checkbox"]
+    border-radius: 50%
+    &:checked
+        background: url("../img/icons/radio_front.svg")
+        &:hover
+            background: url("../img/icons/radio_hover_front.svg")
+    &.inp-bk:checked
+        background: url("../img/icons/radio_back.svg")
+        &:hover
+            background: url("../img/icons/radio_hover_back.svg")
+
+// File
+.inp-file
+    color: $secondaryGrey
+    background-image: url("../img/icons/upload.svg")
+    background-repeat: no-repeat
+    background-size: 1.3rem
+    background-position: 0.69rem 0.55rem
+    >input[type="file"]
+        display: none
+
+.js-value
+    padding-left: 1.75rem
+
+.inp-file.has
+    color: $black
+    background-image: url("../img/icons/upload_has.svg")
+
+.inp-file-bk.has
+    background-image: url("../img/icons/upload_has_bk.svg")
+
+//Select
+select
+    padding: 8px 38px 8px 12px
+    background-image: url(../img/icons/downselect.svg)
+    background-repeat: no-repeat
+    background-size: 24px
+    background-position: 95% 50%
+
+// Search
+.search
+    background-color: transparent
+    outline: none
+    border: none
+    border-bottom: 1.5px solid $tertiaryGrey
+    transition: .7s $easeOutQuint
+    &:hover
+        border-color: $secondaryGrey
+
+// 
+// 
+// Typography
+.t-display
+    font-size: 100px
+
+.t-display-first
+    font-size: 80px
+
+.t-display-sec
+    font-size: 60px
+
+.t-title
+    @extend .t-w-bold
+    font-size: 1.8rem
+    line-height: 250%
+
+.t-title-first
+    @extend .t-w-bold
+    font-size: 1.75rem
+    line-height: 175%
+
+.t-title-sec
+    @extend .t-w-bold
+    font-size: 1.5rem
+    line-height: 150%
+
+.t-title-third
+    @extend .t-w-bold
+    font-size: 1.125rem
+    line-height: 150%
+
+.t-txt
+    font-size: 1rem
+    line-height: 175%
+
+.t-w-bold
+    font-weight: bold
+
+.t-w-light
+    font-weight: lighter
+
+.t-w-normal
+    font-weight: normal
+    
+.t-w-500
+    font-weight: 500
+
+.t-w-400
+    font-weight: 400
+
+.t-txt-sec
+    font-size: 0.875rem
+    line-height: 1.5rem
+
+a.t-brdcrumb
+    font-size: 0.875rem
+    line-height: 1.25rem
+    &:hover
+        color: $black
+    &:visited:hover
+        color: $black
+
+a.t-brdcrmb-active
+    @extend .t-brdcrumb
+    @extend .t-w-500
+
+    // 文字顏色
+.t-c-main
+    color: $mainColor
+
+.t-c-sub
+    color: $subColor
+
+.t-c-g
+    color: $secondaryGrey
+
+.t-c-err
+    color: $errorMain
+
+.t-c-white
+    color: $white
+
+.t-c-gradient
+    background-image: linear-gradient(to right, $mainColor, $subColor)
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+
+// 
+// 
+// Margin, Padding
+.my-m-0
+    margin: 0
+
+// 
+// 
+// Image
+.icon
+    width: 2rem
+
+.icon[alt="alert"]
+    width: 18px
+
+
+// 
+// 
+// Tooltip
+.my-tooltip
+    position: relative
+    &::after
+        // display: block
+        content: attr(data-tooltip)
+        position: absolute
+        top: calc(100% + 4px)
+        left: -50%
+        z-index: 99
+        width: max-content
+        max-width: 200px
+        letter-spacing: 1.5px
+        background-color: $darkGrey
+        color: $white
+        font-size: .75rem
+        font-weight: 500
+        padding: .25rem .5rem
+        border-radius: .25rem
+        display: block
+        opacity: 0
+        transition: .35s $easeOutQuint
+        transform: scale(0)
+        text-align: left
+        @include shadowLift
+
+    &:hover::after
+        opacity: 1
+        transform: scale(1)
+
+.my-tooltip-left
+    @extend .my-tooltip
+    &::after
+        right: -120%
+        left: unset
+// 
+// 
+// Layout
+// Related
+.my-card
+    background-color: $white
+    border-radius: 8px
+    padding: 2rem
+    @include shadowLift
+    &:not(.no-hover):hover
+        @include shadowDown
+
+.my-card
+    p, span
+        text-decoration: none
+
+.my-case a
+    text-decoration: none
+
+.mainSec
+    margin-bottom: 80px
+    &::before
+        content: ""
+        display: block
+        margin-top: -150px
+        height: 150px
+        visibility: hidden
+    @include rwd-up(md)
+        margin-bottom: 160px
+
+//
+//
+//
+// Other
+.state-ongoing
+    border-radius: 50%
+    background-color: $alarm
+    @include size(10px)
+    display: inline-block
+    margin-right: 0.5rem

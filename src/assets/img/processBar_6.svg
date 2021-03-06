@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 800 114.8" style="enable-background:new 0 0 800 114.8;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#C8C8C8;stroke-width:12;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#2A86C6;stroke-width:12;stroke-miterlimit:10;}
+	.st2{fill:#2A86C6;}
+	.st3{fill:#C8C8C8;}
+	.st4{fill:#FFFFFF;}
+	.st5{font-family:'NotoSansCJKtc-Light-B5pc-H';}
+	.st6{font-size:18px;}
+	.st7{fill:#040000;}
+</style>
+<g id="圖層_1">
+</g>
+<g id="processBar">
+</g>
+<g id="circle">
+	<line class="st0" x1="48.4" y1="40.6" x2="751.6" y2="40.6"/>
+	<line class="st0" x1="550.7" y1="40.6" x2="651.3" y2="40.6"/>
+	<line class="st0" x1="644.5" y1="40.6" x2="745.2" y2="40.6"/>
+	<line class="st1" x1="450.2" y1="40.6" x2="550.7" y2="40.6"/>
+	<line class="st1" x1="349.8" y1="40.6" x2="450.2" y2="40.6"/>
+	<line class="st1" x1="249.3" y1="40.6" x2="349.8" y2="40.6"/>
+	<line class="st1" x1="148.9" y1="40.6" x2="249.3" y2="40.6"/>
+	<line class="st1" x1="48.2" y1="40.6" x2="148.9" y2="40.6"/>
+	<circle class="st2" cx="48.4" cy="40.6" r="14.5"/>
+	<circle class="st2" cx="148.9" cy="40.6" r="14.5"/>
+	<circle class="st2" cx="249.3" cy="40.6" r="14.5"/>
+	<circle class="st2" cx="349.8" cy="40.6" r="14.5"/>
+	<circle class="st2" cx="450.2" cy="40.6" r="14.5"/>
+	<circle class="st2" cx="550.7" cy="40.6" r="14.5"/>
+	<circle class="st3" cx="651.1" cy="40.6" r="14.5"/>
+	<circle class="st3" cx="751.6" cy="40.6" r="14.5"/>
+	<text transform="matrix(1 0 0 1 728.4388 81.7886)" class="st4 st5 st6">Step8</text>
+	<text transform="matrix(1 0 0 1 627.9835 81.7886)" class="st4 st5 st6">Step7</text>
+	<text transform="matrix(1 0 0 1 527.5272 81.7886)" class="st7 st5 st6">Step6</text>
+	<text transform="matrix(1 0 0 1 427.071 81.7886)" class="st4 st5 st6">Step5</text>
+	<text transform="matrix(1 0 0 1 326.6152 81.7886)" class="st4 st5 st6">Step4</text>
+	<text transform="matrix(1 0 0 1 226.1595 81.7886)" class="st4 st5 st6">Step3</text>
+	<text transform="matrix(1 0 0 1 125.7032 81.7886)" class="st4 st5 st6">Step2</text>
+	<text transform="matrix(1 0 0 1 25.2474 81.7886)" class="st4 st5 st6">Step1</text>
+</g>
+</svg>

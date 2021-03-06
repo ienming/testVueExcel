@@ -1,0 +1,649 @@
+// 
+// 
+// Header
+.header
+    padding: .75rem 4.64vw
+    display: flex
+    justify-content: space-between
+    align-items: center
+    background-color: #fafafa
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1)
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 999
+    width: 100%
+    @include rwd-down(sm)
+        padding: 0 28px
+    .mybtn
+        line-height: 225%
+        min-width: unset
+
+.logo
+    width: calc(40px + (90 - 40) * ((100vw - 320px) / (1920 - 320)))
+
+.nav
+    display: flex
+    >ul
+        display: flex
+        justify-content: center
+        align-items: center
+        @include rwd-down(md)
+            display: block
+            position: absolute
+            right: 0
+            top: 0
+            margin: 0
+            padding: 32px
+            height: 100vh
+            width: 40vw
+            background-color: $white
+            transform: translateX(100%)
+            transition: transform .6s $easeOutQuint
+            >li
+                padding: 21px 0
+        @include rwd-down(sm)
+            width: 60vw
+            >li
+                padding: 21px 4px
+        @include rwd-down(xs)
+            width: 70vw
+            >li
+                padding: 16px 0px
+    li
+        list-style: none
+        padding: 10px 21px
+        &:hover
+            cursor: pointer
+    a
+        text-decoration: none
+
+.nav .mybtn.mybtn-main //桌面版登入按鈕
+    padding: 0 21px
+
+.nav li[id]
+    a, span
+        position: relative
+        font-weight: 500
+        // 顯示當前頁面圓點
+        &::after
+            @include size(10px)
+            content: ''
+            background-color: $mainColor
+            position: absolute
+            bottom: -17.5px
+            left: 50%
+            transform: translate(-50%, 100%)
+            border-radius: 50%
+            opacity: 0
+            transition: all .6s $easeOutQuint
+        &:hover::after
+            transform: translate(-50%, 0)
+            opacity: 1
+    // 當前頁面
+    &.active>a, &.active>span
+        color: $black
+        &::after
+            opacity: 1
+            transform: translate(-50%, 0)
+
+// 手機版子選單
+.side-nav-page
+    display: none
+    color: $white !important
+    font-weight: 500
+    padding: 21px 0
+    @include rwd-down(md)
+        display: block
+    li
+        padding: 0
+    .icon
+        width: 24px
+        margin: 0 0 0.25rem 0.25rem
+        transition: transform .6s $easeOutQuint
+
+.side-nav-page:not(.collapsed)
+    .icon
+        transform: rotate(180deg)
+
+.side-nav-page+.side-sub-menu
+    li
+        margin: 1.5rem 0
+    a:first-of-type>li
+        margin: 0
+    span
+        // padding-left: 1.5rem
+        color: $white
+        font-size: 1rem
+
+// 桌面版子選單 submenu
+.sub-menu
+    display: block
+    position: relative
+    padding-bottom: 21px
+    display: inline-block
+    a::after
+        display: none
+    >span
+        color: $black
+        font-weight: 500
+        @include rwd-down(md)
+            color: $white
+    @include rwd-down(md)
+        display: none
+
+.sub-menu-drop
+    width: 140%
+    top: 2.125rem
+    pointer-events: none
+    overflow: hidden
+    opacity: 0
+    z-index: 99
+    position: absolute
+    top: 2rem
+    left: 1rem
+    transition: top .6s $easeOutQuint, opacity .1s easeInOut
+    padding-left: 0
+    border-radius: 16px
+    background-color: $white
+    min-width: 140px
+    max-width: 400px
+    text-align: center
+    @include shadowLift
+    @include rwd-down(md)
+    li
+        cursor: pointer
+        padding: 1rem 2rem
+        &:hover
+            background-color: lighten($tertiaryGrey, 10%)
+    button
+        background: none
+        border: none
+        &:focus
+            outline: none
+
+.sub-menu-drop.open
+    pointer-events: auto
+    top: 2rem
+    opacity: 1
+
+    // 手機板 Menu
+.nav>ul.open
+    @include mainGradient
+    li[id]>a, li[id]>span
+        color: $white
+        &::after
+            background-color: $white
+            right: -1.5rem
+            top: 50%
+            bottom: unset
+            left: unset
+    @include rwd-down(lg)
+        transform: translateX(0)
+        // close icon
+        >li:first-child()
+            text-align: right
+            padding: 8px 8px 0 0
+            margin-bottom: 4vh
+    // 當前頁面
+    li[id].active>a
+        color: $white
+        &::after
+            transform: translate(0, -50%)
+
+    // toggle 按鈕
+.hmbg, .cancel
+    display: none
+    @include rwd-down(md)
+        display: inline
+
+    // 手機板登入按鈕
+.mb-login
+    display: none
+    @include rwd-down(md)
+        display: inline-block
+        padding-right: 21px
+
+    // 桌面版登入按鈕
+.dsk-login
+    padding-left: 21px
+    @include rwd-down(md)
+        display: none
+
+
+// 
+// 
+// Footer
+.footer
+    padding: 78px 0
+    border-top: 1px solid #000
+    .icon
+        margin: 1rem .75rem
+        @include rwd-down(md)
+            margin: .25rem
+    .nchc
+        padding-top: 60px
+        @include rwd-down(md)
+            padding-bottom: 60px
+
+.footer li.d-flex
+    @include rwd-down(md)
+        flex-direction: column
+        margin: 0 0 2rem 0 !important
+        align-items: baseline !important
+
+.copyright
+    @include rwd-down(md)
+        margin-top: 60px
+
+// 
+// 
+// 
+// 登入前 page content
+// 主要文章範圍
+#mainBefLog
+    padding-top: 150px
+    @include rwd-down(md)
+        padding: 15vh 32px 0 32px
+
+// 最新消息
+#newsSec
+    figure
+        min-width: 380px
+        max-width: 380px
+        overflow: hidden
+        margin: 0 2rem 0 0 
+        @include rwd-down(md)
+            max-width: unset
+            margin: 0
+            height: 190px
+            width: 100%
+    .news
+        display: flex
+        flex-wrap: nowrap
+        height: 220px
+        margin: 2rem 0 3rem 0
+        padding-bottom: 2rem
+        border-bottom: 1px solid $tertiaryGrey
+        @include rwd-down(md)
+            flex-wrap: wrap
+            height: unset
+.news-content
+    @include rwd-down(md)
+        margin-top: 1rem
+
+.page-nav
+    text-align: center
+    padding-bottom: 3rem
+    button
+        margin: .5rem
+        border: none
+        padding: 12px 20px
+        background-color: $secondaryGrey
+        transition: .7s $easeOutQuint
+        color: $white
+        &:hover
+            background-color: $tertiaryGrey
+
+
+// 
+// 
+// Aside
+// Navigation Bar
+// Header for
+// 前後台
+#content
+    width: calc(100% - 300px)
+    position: absolute
+    top: 0
+    right: 0
+    transition: all .6s $easeOutQuint
+    >article
+        padding: 18px 0 96px 0
+
+#content.active
+    width: 100%
+
+.header-side //#sidebar
+    min-width: 300px
+    max-width: 300px
+    @include rwd-down(md)
+        min-width: 340px
+        max-width: 340px
+    height: 100vh
+    position: fixed
+    z-index: 99
+    transition: margin 1s $easeOutQuint
+    background-color: $white
+    box-shadow: 0 0 5px 0 transparentize($black, .7)
+    &::before //上面的漸層條
+        content: ''
+        display: block
+        position: absolute
+        top: 0
+        left: 0
+        @include size(100%, 16px)
+        @include mainGradient
+    .mybtn-main, .mybtn-sub
+        padding: .5rem
+    .mybtn-outlined
+        padding: .25rem .5rem
+        float: right
+        @include rwd-down(md)
+            float: none
+            margin-bottom: 20px
+    header
+        padding: 30px 20px 20px 20px
+        height: 100%
+        @include rwd-down(md)
+            padding: 30px
+
+.header-side-bk::before
+    @include subGradient
+
+.header-side.hidden
+    margin-left: -300px
+    @include rwd-down(md)
+        margin-left: -340px
+
+.nav-side
+    display: block
+    height: 100%
+    figure
+        display: inline-block
+        @include rwd-down(md)
+            display: block
+    >ul
+        display: block
+        padding-left: 0
+        .mybtn:hover
+            background-color: $articleBg
+        .icon:not(.subMenutoggle)
+            margin: 0 .75rem
+    li
+        text-align: left
+        padding: 6px 12px 6px 3px
+        display: block
+        font-size: 16px
+        @include rwd-down(md)
+            padding: 9px 18px 9px 3px
+        >span
+            position: relative
+            &::after //目前頁面小圓點
+                display: block
+                content: ''
+                @include size(10px)
+                border-radius: 50%
+                background-color: $mainColor
+                position: absolute
+                right: -32px
+                top: 50%
+                transform: translate(-50%, -50%)
+                opacity: 0
+                transition: top .6s $easeOutQuint
+        >span.active::after
+            opacity: 1
+    a[aria-expanded="false"] //案件管理、關於資料庫釋出
+        color: $black
+        .subMenutoggle
+            transition: transform .6s $easeOutQuint
+    a[aria-expanded="true"]
+        .subMenutoggle
+            transform-origin: 50% 50%
+            transform: rotate(-90deg) translateX(5px)
+            transition: transform .6s $easeOutQuint
+    a
+        text-decoration: none
+
+.nav-side-bk li>span::after
+    background-color: $subColor
+
+#sideNavigationGroup
+    max-height: unset
+    overflow-y: auto
+
+@media only screen and (max-height: 768px)
+    #sideNavigationGroup
+        max-height: 55vh
+
+.side-submenu
+    .mybtn
+        font-weight: 500
+        padding-left: 2rem
+
+#logoutContainer
+    position: absolute
+    right: 0
+    bottom: 0
+    width: 100%
+    background-color: $white
+    justify-content: flex-end
+
+#logout
+    margin-right: 15px
+    margin-bottom: 15px
+    padding: .25rem .5rem
+    font-size: .65rem
+    font-weight: 500
+    @include rwd-down(md)
+        font-size: .85rem
+    >.icon
+        width: 1.5rem
+
+#sidebarToggle
+    position: absolute
+    right: -40px
+    top: 50px
+    background-color: $white
+    border-radius: 0 .5rem .5rem 0
+    >img
+        padding: 0
+        width: 1.25rem
+        opacity: 0.5
+        transition: opacity .6s $easeOutQuint
+
+#sidebarToggle:hover
+    >img
+        opacity: 1
+
+#sidebarToggle.active>img
+    transform: rotate(180deg)
+
+// 
+// 
+// Top
+// Navigation
+// 前後台
+#breadNav
+    padding: 30px 160px 35px 160px
+    background-color: $articleBg
+    position: sticky
+    top: 0
+    right: 0
+    width: 100%
+    z-index: 98
+    @include rwd-down(xl)
+        padding: 30px 70px 35px 65px
+    @include rwd-down(md)
+        padding: 75px 24px 35px 80px
+
+#breadNav>*
+    margin: .75rem 0
+
+
+//
+//
+//
+.my-tabs
+    margin-bottom: 24px
+    >.nav-item.active
+        position: relative
+        &::after
+            content: ""
+            width: 100%
+            height: 2px
+            background-color: $black
+            position: absolute
+            bottom: 0
+            left: 0
+        >a
+            color: $black
+    a
+        color: $secondaryGrey
+        &:hover
+            color: $secondaryGrey
+    .nav-link.active
+        color: $black
+        background-color: unset
+        border: none
+        border-bottom: 3px solid $black
+
+//
+//
+// Other
+.more-action
+    width: 12px
+    border: none
+    position: relative
+    img
+        width: 100%
+    &:focus
+        outline: none
+    .sub-menu-drop
+        left: -150px
+
+.more-action.my-tooltip::after
+    left: unset
+    right: 150%
+    top: 10%
+
+.division-or
+    position: relative
+    &::after
+        content: attr(data-content)
+        background-color: $articleBg
+        padding: .5rem
+        color: $secondaryGrey
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+// 
+// 
+// Marquee
+#marquee
+    overflow: hidden
+    position: relative
+    padding: 48px 0
+    display: flex
+    justify-content: center
+    align-items: center
+    .banner
+        font-size: 288px
+        opacity: 0.5
+        display: inline
+        @include poa(calc(25% - 48px), 0%, -50%, -50%)
+        white-space: nowrap
+        padding: 0 32px
+        background-image: linear-gradient(to right, $mainColor, $subColor)
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
+        &:nth-child(1)
+            animation: marqueeFirst 60s linear 0s 1, marquee 60s linear 30s infinite
+        &:nth-child(2)
+            animation: marquee 60s linear 0s infinite
+            transform: translateX(100%)
+    .my-card
+        padding: 60px
+        max-width: 600px
+        position: relative
+        @include rwd-down(md)
+            padding: 30px
+            margin: 0 32px
+            
+
+@keyframes marqueeFirst
+    0%
+        transform: translateX(0%)
+    50%
+        transform: translateX(-100%)
+    51%
+        transform: translateX(100%)
+    100%
+        transform: translateX(100%)
+
+@keyframes marquee
+    0%
+        transform: translateX(100%)
+    100%
+        transform: translateX(-100%)
+        
+// 
+// 
+// Hero
+#heroBanner
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 95vh
+    max-height: 910px
+    background-image: url("../img/twbk_hero.jpg")
+    background-size: cover
+
+#introText
+    text-align: center
+    width: 100%
+    max-width: 640px
+    padding: 0 32px
+    margin-top: 50px
+    @include rwd-down(md)
+        margin-top: 0
+        max-width: unset
+        padding: 0 128px
+        height: 100%
+        padding-top: 30vh
+        background-image: linear-gradient(135deg, transparentize($mainColor, .1), transparentize($subColor, .3))
+    @include rwd-down(md)
+        padding: 30vh 32px 0 32px
+    h1
+        font-size:  calc(36px + (68-36) * ((100vw - 240px) / 1680))
+
+// 
+// 
+// Slides
+.slides-btn
+    background-color: $darkGrey
+    color: $white
+    padding: 120px 40px
+    display: inline-block
+    transition: all 1.2s $easeOutQuint
+    position: absolute
+    left: -120px
+    @include rwd-down(md)
+        left: unset
+        right: unset
+        padding: 16px
+        background-color: $tertiaryGrey
+    &:hover
+        cursor: pointer
+        background-color: lighten($darkGrey, 10%)
+
+.slides-btn:nth-child(2)
+    left: unset
+    right: -120px
+
+.slides-btn img
+    @include rwd-down(md)
+        filter: invert(1)
+
+.slides-btn-container
+    position: absolute
+    top: 120px
+    width: 100%
+    opacity: .75
+    @include rwd-down(md)
+        position: sticky
+        top: 70vh
+        z-index: 99
+        margin-left: -48px
+        width: calc(100% - 24px)

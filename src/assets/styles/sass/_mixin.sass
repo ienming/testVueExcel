@@ -1,0 +1,73 @@
+@mixin size($w, $h:$w)
+    width: $w
+    height: $h
+
+@mixin dflex($jc:center, $ai:center, $wrap:wrap)
+    display: flex
+    justify-content: $jc
+    align-items: $ai
+    flex-wrap: $wrap
+
+@mixin poa($t, $l, $tr-t, $tr-l)
+    position: absolute
+    top: $t
+    left: $l
+    transform: translate($tr-t, $tr-l)
+
+@mixin mainGradient
+    background: linear-gradient(82.59deg, #288ED5 1.09%, #6FA707 162.85%)
+
+@mixin subGradient
+    background: linear-gradient(82.59deg, #6FA707 1.09%, #288ED5 162.85%)
+
+@mixin gradientBgTransit
+    background: linear-gradient(90deg, $mainColor 0%, $subColor 50%, $mainColor 100%)
+    background-size: 200% 200%
+    &:hover
+        background-position: 100% 100%
+
+@mixin mainShadow
+    box-shadow: 0px 6px 10px rgba(51, 152, 219, 0.35)
+    transition: all .6s $easeOutQuint
+
+@mixin mainShadowDown
+    box-shadow: 0px 3px 5px rgba(51, 152, 219, 0.65)
+
+@mixin subShadowDown
+    box-shadow: 0px 2px 5px rgba(111, 167, 7, 0.65)
+    transition: all .6s $easeOutQuint
+
+@mixin subShadow
+    box-shadow: 0px 6px 10px rgba(111, 167, 7, 0.35)
+
+@mixin shadowLift
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.15)
+    transition: all .6s $easeOutQuint
+
+@mixin shadowDown
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.55)
+
+@mixin btn-generator($color, $bgc, $bdw, $bdc, $color-hover:$color, $bgc-hover:$bgc, $bdw-hover:$bdw, $bdc-hover:$bdc)
+    color: $color
+    background-color: $bgc
+    border: $bdw solid $bdc
+    &:not([disabled]):hover
+        color: $color-hover
+        background-color: $bgc-hover
+        border: $bdw-hover solid $bdc-hover
+
+@mixin btn-secondary
+    font-size: .75rem
+    border-radius: 1.75rem
+
+// Bootstrap RWD
+// min-width from phone to desktop
+@mixin rwd-up($breakpoint)
+    $query: map-get($breakpoints, $breakpoint)
+    @media only screen and (min-width: #{$query}px)
+        @content
+// max-width from desktop to phone
+@mixin rwd-down($breakpoint)
+	$query: map-get($breakpoints, $breakpoint)
+	@media only screen and (max-width: #{$query}px)
+		@content
