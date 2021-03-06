@@ -10,7 +10,7 @@ npm run build
 cd dist
 
 git init
-git add -A
+git add .
 git commit -m 'deploy'
 
 # 部署到 https://<USERNAME>.github.io/<REPO>
